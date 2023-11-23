@@ -26,4 +26,4 @@ python3 manage.py createsuperuser
 python3 manage.py runserver
 ```
 
-after that you can acess <https://localhost/api> and use normally
+after that you can acess <http://localhost:8000/api> and use normally
