@@ -6,7 +6,7 @@ class Owner(models.Model):
   email = models.CharField(max_length=255)
 
   def __str__(self):
-    return self.name
+    return f'{self.name}'
 
 class Animal(models.Model):
   name = models.CharField(max_length=255)
@@ -18,7 +18,7 @@ class Animal(models.Model):
   services = models.ManyToManyField('Service', through='AnimalService', blank=True)
 
   def __str__(self):
-    return self.name
+    return f'{self.name}'
 
 # This is the model that represents the relationship N:M between Animal, Service and Veterinary
 class AnimalService(models.Model):
@@ -28,7 +28,7 @@ class AnimalService(models.Model):
   date = models.DateTimeField()
 
   def __str__(self):
-    return self.animal.name + ' - ' + self.service.name
+    return f'{self.animal} - {self.service} - {self.veterinary}'
 
 class Service(models.Model):
   name = models.CharField(max_length=255)
@@ -38,18 +38,18 @@ class Service(models.Model):
   veterinary = models.ForeignKey('Veterinary', on_delete=models.CASCADE)
 
   def __str__(self):
-    return self.name
+    return f'{self.name}'
 
 class Vaccine(models.Model):
   name = models.CharField(max_length=255)
   date = models.DateField()
 
   def __str__(self):
-    return self.name
+    return f'{self.name}'
   
 class Veterinary(models.Model):
   name = models.CharField(max_length=255)
   specialty = models.CharField(max_length=255)
 
   def __str__(self):
-    return self.name
+    return f'{self.name}'
