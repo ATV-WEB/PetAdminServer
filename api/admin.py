@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Owner, Animal, Service, Vaccine, Veterinary, AnimalService
 
-# Register your models here.
+# Registering my models in the admin site with the decorator
+admin.register(Owner, Animal, Service, Vaccine, Veterinary, AnimalService)(admin.ModelAdmin)
