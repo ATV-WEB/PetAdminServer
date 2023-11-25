@@ -13,7 +13,7 @@ class Animal(models.Model):
   breed = models.CharField(max_length=255)
   age = models.IntegerField()
   gender = models.CharField(max_length=255, choices=[('m', 'masculino'), ('f', 'femenino')], default='m')
-  owner = models.ManyToManyField('Owner')
+  owners = models.ManyToManyField('Owner')
   vaccines = models.ManyToManyField('Vaccine', blank=True)
   services = models.ManyToManyField('Service', through='AnimalService', blank=True)
 
