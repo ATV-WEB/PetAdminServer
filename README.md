@@ -2,6 +2,15 @@
 
 A back-end for PetAdmin
 
+## On docker
+
+to build run the command:
+
+```bash
+docker build -t petadminserver .
+docker run -p 8000:8000 --name petadmin-back petadminserver
+```
+
 ## Setup Project
 
 > On Windows:
