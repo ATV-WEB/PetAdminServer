@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 # All endpoints are defined here
+# Os = Ordem de Serviço (Service Order)
 
 urlpatterns = [
   path('owner/', views.OwnerView.as_view(), name='owner'), # Create (POST) and Read (GET) endpoints
@@ -12,9 +13,9 @@ urlpatterns = [
   path('animal/<int:id>', views.AnimalEditView.as_view(), name='animal-edit'), # Edit (POST) and Read (GET) endpoints
   path('animal/delete/<int:id>', views.AnimalDeleteView.as_view(), name='animal-delete'), # Delete (GET) endpoint
 
-  path('animal-service/', views.AnimalServiceView.as_view(), name='animal-service'), # Create (POST) and Read (GET) endpoints
-  path('animal-service/<int:id>', views.AnimalServiceEditView.as_view(), name='animal-service-edit'), # Edit (POST) and Read (GET) endpoints
-  path('animal-service/delete/<int:id>', views.AnimalServiceDeleteView.as_view(), name='animal-service-delete'), # Delete (GET) endpoint
+  path('os/', views.OsView.as_view(), name='os'), # Create (POST) and Read (GET) endpoints
+  path('os/<int:id>', views.OsEditView.as_view(), name='os-edit'), # Edit (POST) and Read (GET) endpoints
+  path('os/delete/<int:id>', views.OsDeleteView.as_view(), name='os-delete'), # Delete (GET) endpoint
 
   path('service/', views.ServiceView.as_view(), name='service'), # Create (POST) and Read (GET) endpoints
   path('service/<int:id>', views.ServiceEditView.as_view(), name='service-edit'), # Edit (POST) and Read (GET) endpoints

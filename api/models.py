@@ -1,5 +1,7 @@
 from django.db import models
 
+# OS = Ordem de Serviço (Service Order)
+
 class Owner(models.Model):
   name = models.CharField(max_length=255)
   address = models.CharField(max_length=255)
@@ -15,13 +17,13 @@ class Animal(models.Model):
   gender = models.CharField(max_length=255, choices=[('m', 'masculino'), ('f', 'femenino')], default='m')
   owners = models.ManyToManyField('Owner')
   vaccines = models.ManyToManyField('Vaccine', blank=True)
-  services = models.ManyToManyField('Service', through='AnimalService', blank=True)
+  services = models.ManyToManyField('Service', through='OS', blank=True)
 
   def __str__(self):
     return f'{self.name}'
 
 # This is the model that represents the relationship N:M between Animal, Service and Veterinary
-class AnimalService(models.Model):
+class OS(models.Model):
   animal = models.ForeignKey('Animal', on_delete=models.CASCADE)
   service = models.ForeignKey('Service', on_delete=models.CASCADE)
   veterinary = models.ForeignKey('Veterinary', on_delete=models.CASCADE)

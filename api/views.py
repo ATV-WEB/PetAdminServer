@@ -1,6 +1,6 @@
 from . import serializers
 from rest_framework.views import APIView
-from .models import Owner, Animal, AnimalService, Service, Vaccine, Veterinary
+from .models import Owner, Animal, OS, Service, Vaccine, Veterinary
 from django.http import JsonResponse
 
 class OwnerView(APIView): # endpoint for /api/owner
@@ -71,9 +71,9 @@ class AnimalDeleteView(APIView): # endpoint for /api/animal/delete/<id>
     data.delete()
     return JsonResponse(data={'delete' : 'okay'}, status=200, safe=False)
 
-class AnimalServiceView(APIView): # endpoint for /api/animal-service
+class OsView(APIView): # endpoint for /api/os
   def get(self, request, format=None):
-    serializer = serializers.AnimalServiceSerializer(AnimalService.objects.all(), many=True)
+    serializer = serializers.AnimalServiceSerializer(OS.objects.all(), many=True)
     return JsonResponse(data=serializer.data, status=200, safe=False)
 
   def post(self, request, format=None):
@@ -85,13 +85,13 @@ class AnimalServiceView(APIView): # endpoint for /api/animal-service
 
     return JsonResponse(data=serializer.errors, status=400)
   
-class AnimalServiceEditView(APIView): # endpoint for /api/animal-service/<id>
+class OsEditView(APIView): # endpoint for /api/os/<id>
   def get(self, request, id, format=None):
-    serializer = serializers.AnimalServiceSerializer(AnimalService.objects.get(id=id))
+    serializer = serializers.AnimalServiceSerializer(OS.objects.get(id=id))
     return JsonResponse(data=serializer.data, status=200, safe=False)
   
   def post(self, request, id, format=None):
-    serializer = serializers.AnimalServiceSerializer(AnimalService.objects.get(id=id), data=request.data)
+    serializer = serializers.AnimalServiceSerializer(OS.objects.get(id=id), data=request.data)
 
     if serializer.is_valid():
       serializer.save()
@@ -99,9 +99,9 @@ class AnimalServiceEditView(APIView): # endpoint for /api/animal-service/<id>
 
     return JsonResponse(data=serializer.errors, status=400)
   
-class AnimalServiceDeleteView(APIView): # endpoint for /api/animal-service/delete/<id>
+class OsDeleteView(APIView): # endpoint for /api/os/delete/<id>
   def get(self, request, id, format=None):
-    data = AnimalService.objects.get(id=id)
+    data = OS.objects.get(id=id)
     data.delete()
     return JsonResponse(data={'delete' : 'okay'}, status=200, safe=False)
   

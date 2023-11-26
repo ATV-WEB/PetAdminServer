@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Owner, Animal, AnimalService, Service, Vaccine, Veterinary
+from .models import Owner, Animal, OS, Service, Vaccine, Veterinary
 
 class OwnerSerializer(serializers.ModelSerializer):
   class Meta:
@@ -9,11 +9,11 @@ class OwnerSerializer(serializers.ModelSerializer):
 class AnimalSerializer(serializers.ModelSerializer):
   class Meta:
     model = Animal
-    fields = ['id', 'name', 'breed', 'age', 'gender', 'owner', 'vaccines', 'services']
+    fields = ['id', 'name', 'breed', 'age', 'gender', 'owners', 'vaccines', 'services']
 
 class AnimalServiceSerializer(serializers.ModelSerializer):
   class Meta:
-    model = AnimalService
+    model = OS
     fields = ['id', 'animal', 'service', 'veterinary', 'date']
 
 class ServiceSerializer(serializers.ModelSerializer):
