@@ -10,6 +10,9 @@ RUN mkdir -p $DockerHOME
 # Create DB directory
 RUN mkdir -p $DockerHOME/db
 
+# Create the volume
+VOLUME [ $DockerHOME/db ]
+
 # Where your code lives
 WORKDIR $DockerHOME
 
@@ -33,4 +36,4 @@ RUN python manage.py migrate
 EXPOSE 8000/tcp
 
 # Start server
-CMD python manage.py runserver 0.0.0.0:8000
+CMD ["python" "manage.py" "runserver" "0.0.0.0:8000"]
