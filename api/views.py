@@ -87,8 +87,11 @@ class OsView(APIView): # endpoint for /api/os
   def post(self, request, format=None):
     serializer = serializers.AnimalServiceSerializer(data=request.data)
 
+    print(request.data)
+
     if serializer.is_valid():
       serializer.save()
+      print(serializer.data)
       return JsonResponse(data=serializer.data, status=201)
 
     print(serializer.errors)

@@ -1,28 +1,36 @@
-# base image
-FROM python:3.10
-# setup environment variable
+# Base image
+FROM python:3.10-slim
+
+# Setup environment variable
 ENV DockerHOME=/home/app/petadmin
 
-# set work directory
+# Create home directory for app user
 RUN mkdir -p $DockerHOME
 
-# where your code lives
+# Create DB directory
+RUN mkdir -p $DockerHOME/db
+
+# Where your code lives
 WORKDIR $DockerHOME
 
-# set environment variables
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install dependencies
+# Install dependencies
 RUN pip install --upgrade pip
 
-# copy whole project to your docker home directory. 
+# Copy whole project to your docker home directory. 
 COPY . $DockerHOME
-# run this command to install all dependencies
+
+# Run this command to install all dependencies
 RUN pip install -r requirements.txt
-# run django migrations
+
+# Run django migrations
 RUN python manage.py migrate
-# port where the Django app runs
-EXPOSE 8000
-# start server
+
+# Port where the Django app runs
+EXPOSE 8000/tcp
+
+# Start server
 CMD python manage.py runserver 0.0.0.0:8000

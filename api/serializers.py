@@ -14,7 +14,7 @@ class AnimalSerializer(serializers.ModelSerializer):
 class AnimalServiceSerializer(serializers.ModelSerializer):
   class Meta:
     model = OS
-    fields = ['id', 'name', 'animal', 'service', 'schedule_start', 'schedule_end', 'date']
+    fields = ['id', 'name', 'animal', 'service', 'schedule_start', 'schedule_end']
 
 class ServiceSerializer(serializers.ModelSerializer):
   class Meta:
