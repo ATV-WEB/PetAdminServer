@@ -14,12 +14,12 @@ class AnimalSerializer(serializers.ModelSerializer):
 class AnimalServiceSerializer(serializers.ModelSerializer):
   class Meta:
     model = OS
-    fields = ['id', 'animal', 'service', 'veterinary', 'date']
+    fields = ['id', 'name', 'animal', 'service', 'schedule_start', 'schedule_end', 'date']
 
 class ServiceSerializer(serializers.ModelSerializer):
   class Meta:
     model = Service
-    fields = ['id',  'name', 'schedule_start', 'schedule_end', 'price', 'veterinary']
+    fields = ['id',  'name', 'price', 'veterinary']
 
 class VaccineSerializer(serializers.ModelSerializer):
   class Meta:

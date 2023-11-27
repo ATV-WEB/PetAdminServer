@@ -14,7 +14,9 @@ class OwnerView(APIView): # endpoint for /api/owner
       if serializer.is_valid():
         serializer.save()
         return JsonResponse(data=serializer.data, status=201)
-      
+
+      print(serializer.errors)
+
       return JsonResponse(data=serializer.errors, status=400)
    
 class OwnerEditView(APIView): # endpoint for /api/owner/<id>
@@ -28,6 +30,8 @@ class OwnerEditView(APIView): # endpoint for /api/owner/<id>
     if serializer.is_valid():
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
+
+    print(serializer.errors)
 
     return JsonResponse(data=serializer.errors, status=400)
   
@@ -49,6 +53,8 @@ class AnimalView(APIView): # endpoint for /api/animal
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
 
+    print(serializer.errors)
+
     return JsonResponse(data=serializer.errors, status=400)
   
 class AnimalEditView(APIView): # endpoint for /api/animal/<id>
@@ -62,6 +68,8 @@ class AnimalEditView(APIView): # endpoint for /api/animal/<id>
     if serializer.is_valid():
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
+
+    print(serializer.errors)
 
     return JsonResponse(data=serializer.errors, status=400)
   
@@ -83,6 +91,8 @@ class OsView(APIView): # endpoint for /api/os
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
 
+    print(serializer.errors)
+
     return JsonResponse(data=serializer.errors, status=400)
   
 class OsEditView(APIView): # endpoint for /api/os/<id>
@@ -96,6 +106,8 @@ class OsEditView(APIView): # endpoint for /api/os/<id>
     if serializer.is_valid():
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
+
+    print(serializer.errors)
 
     return JsonResponse(data=serializer.errors, status=400)
   
@@ -117,6 +129,8 @@ class ServiceView(APIView): # endpoint for /api/service
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
 
+    print(serializer.errors)
+
     return JsonResponse(data=serializer.errors, status=400)
   
 class ServiceEditView(APIView): # endpoint for /api/service/<id>
@@ -130,6 +144,8 @@ class ServiceEditView(APIView): # endpoint for /api/service/<id>
     if serializer.is_valid():
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
+
+    print(serializer.errors)
 
     return JsonResponse(data=serializer.errors, status=400)
 
@@ -152,6 +168,8 @@ class VaccineView(APIView): # endpoint for /api/vaccine
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
 
+    print(serializer.errors)
+
     return JsonResponse(data=serializer.errors, status=400)
   
 class VaccineEditView(APIView): # endpoint for /api/vaccine/<id>
@@ -165,6 +183,8 @@ class VaccineEditView(APIView): # endpoint for /api/vaccine/<id>
     if serializer.is_valid():
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
+
+    print(serializer.errors)
 
     return JsonResponse(data=serializer.errors, status=400)
 
@@ -186,6 +206,8 @@ class VeterinaryView(APIView): # endpoint for /api/veterinary
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
 
+    print(serializer.errors)
+
     return JsonResponse(data=serializer.errors, status=400)
   
 class VeterinaryEditView(APIView): # endpoint for /api/veterinary/<id>
@@ -199,6 +221,8 @@ class VeterinaryEditView(APIView): # endpoint for /api/veterinary/<id>
     if serializer.is_valid():
       serializer.save()
       return JsonResponse(data=serializer.data, status=201)
+
+    print(serializer.errors)
 
     return JsonResponse(data=serializer.errors, status=400)
   
